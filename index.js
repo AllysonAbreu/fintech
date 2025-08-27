@@ -73,12 +73,13 @@ let trigger = false;
 
 app.post('/taxes-utilities', (req, res) => {
     const { status } = req.body;
+    const { clientDocument } = req.body;
     regLog(req.body);
-    regLog(`Endpoint: /taxes-utilities | status: ${status}`);
+    regLog(`Endpoint: /taxes-utilities | status: ${status} | clientDocument: ${clientDocument}`);
 
-    if (status === 'REJECTED' && trigger) {
+    if (clientDocument === '02826968815') {
         regLog(`Blocked status: ${status} at /taxes-utilities`);
-        trigger = !trigger;
+        //trigger = !trigger;
 
         const body = JSON.stringify({
             statusCode: 400,

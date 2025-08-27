@@ -73,11 +73,11 @@ let trigger = false;
 
 app.post('/taxes-utilities', (req, res) => {
     const { status } = req.body;
-    const { clientDocument } = req.body;
+    const { clientIdentifier } = req.body;
     regLog(req.body);
-    regLog(`Endpoint: /taxes-utilities | status: ${status} | clientDocument: ${clientDocument}`);
+    regLog(`Endpoint: /taxes-utilities | status: ${status} | clientIdentifier: ${clientIdentifier}`);
 
-    if (clientDocument === '02826968815') {
+    if (clientIdentifier.includes('teste-resiliencia-')) {
         regLog(`Blocked status: ${status} at /taxes-utilities`);
         //trigger = !trigger;
 

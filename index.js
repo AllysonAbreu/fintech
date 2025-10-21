@@ -105,7 +105,14 @@ const blockedDocumentsDDA = [
     '90688243096',
     '32827145000157',
     '49926436048',
-    '54003504020'
+    '54003504020',
+    '55367649009',
+    '39573912023',
+    '97217321093',
+    '96179254001',
+    '77721005078',
+    '32502168015',
+    '53063989010'
 ];
 
 app.post('/dda', (req, res) => {
@@ -140,7 +147,15 @@ const blockedDocumentsVehicle = [
     '04192841096',
     '03800352001',
     '01202549055',
-    '74151283030'
+    '74151283030',
+    '47568444058',
+    '77295174001',
+    '08106212076',
+    '23384121090',
+    '84446760041',
+    '21719743037',
+    '60253036062',
+    '91511554002'
 ];
 
 app.post('/vehicle-info', (req, res) => {
@@ -172,12 +187,12 @@ app.post('/vehicle-info', (req, res) => {
 });
 
 app.post('/payment-vehicle', (req, res) => {
-    const { documentNumber } = req.body;
+    const { clientIdentifier,status } = req.body;
     regLog(req.body);
-    regLog(`Endpoint: /payment-vehicle | documentNumber: ${documentNumber}`);
+    regLog(`Endpoint: /taxes-utilities | status: ${status} | clientIdentifier: ${clientIdentifier}`);
 
-    if (blockedDocumentsVehicle.includes(documentNumber)) {
-        regLog(`Blocked documentNumber: ${documentNumber} at /payment-vehicle`);
+    if (clientIdentifier.includes('teste-resiliencia-')) {
+        regLog(`Blocked status: ${status} at /taxes-utilities`);
 
         const body = JSON.stringify({
             statusCode: 400,

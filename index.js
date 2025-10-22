@@ -187,12 +187,12 @@ app.post('/vehicle-info', (req, res) => {
 });
 
 app.post('/payment-vehicle', (req, res) => {
-    const { clientIdentifier,status } = req.body;
+    const { paymentStatus } = req.body;
     regLog(req.body);
-    regLog(`Endpoint: /taxes-utilities | status: ${status} | clientIdentifier: ${clientIdentifier}`);
+    regLog(`Endpoint: /payment-vehicle | status: ${paymentStatus} `);
 
     if (clientIdentifier.includes('teste-resiliencia-')) {
-        regLog(`Blocked status: ${status} at /taxes-utilities`);
+        regLog(`Blocked status: ${paymentStatus} at /payment-vehicle`);
 
         const body = JSON.stringify({
             statusCode: 400,
@@ -213,8 +213,6 @@ app.post('/payment-vehicle', (req, res) => {
     });
     res.end();
 });
-
-
 
 app.listen(port, ()=>{
        regLog("Listem "+port)

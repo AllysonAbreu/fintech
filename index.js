@@ -77,7 +77,7 @@ app.post('/taxes-utilities', (req, res) => {
     regLog(req.body);
     regLog(`Endpoint: /taxes-utilities | status: ${status} | clientIdentifier: ${clientIdentifier}`);
 
-    if (clientIdentifier.includes('test-resiliencia-')) {
+    if (clientIdentifier.includes('teste-resiliencia-')) {
         regLog(`Blocked status: ${status} at /taxes-utilities`);
         //trigger = !trigger;
 

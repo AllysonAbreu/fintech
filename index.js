@@ -188,8 +188,10 @@ app.post('/vehicle-info', (req, res) => {
 
 app.post('/payment-vehicle', (req, res) => {
     const { paymentStatus } = req.body;
+    const { transactionInfo } = req.body
+    const { clientIdentifier } = transactionInfo
     regLog(req.body);
-    regLog(`Endpoint: /payment-vehicle | status: ${paymentStatus} `);
+    regLog(`Endpoint: /payment-vehicle | status: ${paymentStatus} | clientIdentifier: ${clientIdentifier}`);
 
     if (clientIdentifier.includes('teste-resiliencia-')) {
         regLog(`Blocked status: ${paymentStatus} at /payment-vehicle`);

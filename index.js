@@ -188,12 +188,12 @@ app.post('/vehicle-info', (req, res) => {
 
 app.post('/payment-vehicle', (req, res) => {
     const { paymentStatus } = req.body;
-    //const { transactionInfo } = req.body
-    //const { clientIdentifier } = transactionInfo
+    const { transactionInfo } = req.body
+    const { clientIdentifier } = transactionInfo
     regLog(req.body);
     regLog(`Endpoint: /payment-vehicle | status: ${paymentStatus}`);
 
-    /*if (clientIdentifier.includes('teste-resiliencia-')) {
+    if (clientIdentifier.includes('teste-resiliencia-')) {
         regLog(`Blocked status: ${paymentStatus} at /payment-vehicle`);
 
         const body = JSON.stringify({
@@ -207,7 +207,7 @@ app.post('/payment-vehicle', (req, res) => {
             'Cache-Control': 'no-store'
         });
         return res.end(body);
-    }*/
+    }
 
     res.writeHead(201, {
         'Content-Encoding': 'identity',
